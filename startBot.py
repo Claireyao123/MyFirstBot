@@ -1,7 +1,10 @@
 from telegram.ext import Updater
 from telegram.ext import CommandHandler
 from telegram.ext import MessageHandler, Filters
+import random
 import os
+import reward
+import punish
 
 def read_file_as_str(file_path):
     # 判断路径文件存在
@@ -18,16 +21,22 @@ def start(update, context):
 
 def echo(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
+    print(random.choice(reward))
 
 TOKEN=read_file_as_str('TOKEN')
 
+TOKEN = read_file_as_str('TOKEN2')
+print (TOKEN)
 updater = Updater(token=TOKEN, use_context=True)
 dispatcher = updater.dispatcher
+
+echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
+dispatcher.add_handler(echo_handler)
 
 start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
 
-echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
-dispatcher.add_handler(echo_handler)
+reward.add_dispatcher(dispatcher)
+punish.add_dispatcher(dispatcher)
 
 updater.start_polling()
