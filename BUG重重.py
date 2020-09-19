@@ -1,8 +1,8 @@
-import random
 from telegram.ext import Updater
 from telegram.ext import CommandHandler
 from telegram.ext import MessageHandler, Filters
 import os
+import random
 import rewards 
 import punishes
 
