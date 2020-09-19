@@ -23,9 +23,6 @@ def echo(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
  
 TOKEN=read_file_as_str('TOKEN')
-
-TOKEN = read_file_as_str('TOKEN2')
-print (TOKEN)
 updater = Updater(token=TOKEN, use_context=True)
 dispatcher = updater.dispatcher
 
