@@ -2,6 +2,7 @@ from telegram.ext import Updater
 from telegram.ext import CommandHandler
 from telegram.ext import MessageHandler, Filters
 import os
+import guesscmd
 
 def read_file_as_str(file_path):
     # 判断路径文件存在
@@ -23,7 +24,7 @@ TOKEN=read_file_as_str('TOKEN')
 
 updater = Updater(token=TOKEN, use_context=True)
 dispatcher = updater.dispatcher
-
+guesscmd.add_handler(dispatcher)
 start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
 
