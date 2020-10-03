@@ -2,10 +2,18 @@ from telegram.ext import Dispatcher,CommandHandler
 import random
 def guess(update, context):
     if len(context.args) == 0:
-        update.message.reply_text("欢迎玩猜数字游戏，请在0-10之间猜一个数字吧！\nWelcome to Guess Number game, please guess between 0 and 10!")
-    else: 
-        number = int(context.args[0])
-        update.message.reply_text("你输入的数字是%s"%number)
+        update.message.reply_text(help())
+    else:
+        print(context.args)
+        if context.args[0].isdigit():
+            number = int(context.args[0])
+            update.message.reply_text("you say %s"%number)
+        else: 
+            update.message.reply_text("你输入的%s不是数字"%context.args[0])
+            
+
+            
+           
 
 
 def add_handler(dp:Dispatcher):
