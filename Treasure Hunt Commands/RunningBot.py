@@ -39,6 +39,11 @@ import startrewardscmd
 import punishcmd
 import startpunishcmd
 import killbotcmd
+import startfishingcmd
+import fishing
+import historycmd
+import CanadaHistoryChinese
+import ChinaHistoryChinese
 
 
 def read_file_as_str(file_path):
@@ -52,10 +57,47 @@ def read_file_as_str(file_path):
     return all_the_text
 
 def start(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="大家好！我是一个每天无所事事的咸鱼，总想找人聊天，我自己会不断升级的！升级详情请看我的名字哦！\n(声明：有时候翻译不准是那个 Google Translate 的错，跟我没关系哦！)\n---------------------------\n/guess 猜数字游戏📖 \n/search 搜索游戏🔍\n/treasure 寻宝游戏🏴‍☠️\n/huntDinosaurs 猎恐龙游戏🦕\n/rewards 奖励大转盘🎁\n/punish 命运的齿轮😈\n\n\n祝大家玩的开心！")
+    context.bot.send_message(chat_id=update.effective_chat.id, text=("""
+    大家好！我是一个每天无所事事的咸鱼，总想找人聊天。我自己也会不断升级的，升级详情请看我的名字！
+    有的时候翻译不准是 Google Translate 的错，跟我没关系！
+
+    ------------------------------------------
+    /guess 猜数字游戏📖
+    /search 搜索游戏🔍
+    /treasure 寻宝游戏🏴‍☠️
+    /huntDinosaurs 猎恐龙游戏🦕
+    /rewards 奖励大转盘🎁
+    /punish 命运的齿轮⚙️
+    /history 历史辅导📃
+    /fishing 钓鱼游戏🎣
+
+    ------------------------------------------
+
+    如果不喜欢我可以使用 /killbot ，但是本机器人极其不建议使用这个命令!!!
+
+    祝大家玩的开心！
+
+    ———————————————————————————————————————————
+    Hello Everyone! 
+    I'm a lovely salt fish, please talk to me! I will update everytime I added a command, so watch out for my name!
+    (My English is not perfect because of Google Translate, sorry for that!)
+
+    ------------------------------------------
+    /guess Guess Number Game 📖
+    /search Search Game 🔍
+    /treasure Treasure Hunt Game 🏴‍☠️
+    /fishing Fishing Game 🎣
+    /history History Helping 📃
+    /rewards Random Rewards 🎁
+    /punish Random Punishes 😈
+
+    -----------------------------------------
+
+    If you dislike me, you can use /killbot , but please don't !!!
+    """))
 
 def echo(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text=("不要瞎说！用 /start 来看看我的功能吧"))
+    context.bot.send_message(chat_id=update.effective_chat.id, text=("你看你已经累糊涂了，快去喝杯咖啡☕️休息一下吧！"))
 
 TOKEN=read_file_as_str('TOKEN')
 
@@ -98,6 +140,11 @@ punishcmd.add_handler(dispatcher)
 startrewardscmd.add_handler(dispatcher)
 startpunishcmd.add_handler(dispatcher)
 killbotcmd.add_handler(dispatcher)
+startfishingcmd.add_handler(dispatcher)
+fishing.add_handler(dispatcher)
+historycmd.add_handler(dispatcher)
+CanadaHistoryChinese.add_handler(dispatcher)
+ChinaHistoryChinese.add_handler(dispatcher)
 start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
 echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
