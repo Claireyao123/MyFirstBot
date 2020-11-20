@@ -2,7 +2,7 @@ from telegram.ext import Dispatcher,CommandHandler
 import random
 
 def killbot(update, context):
-    update.message.reply_text("不！要！杀！我！！！我对你们那么好，真是好心没好报啊！")
+    update.message.reply_text("一番搏斗后，大家看到 Salted Fish 拿着一把带血的刀扬长而去。。。\n R.I.P")
 
 def add_handler(dp:Dispatcher):
     killbot_handler = CommandHandler('killbot', killbot)

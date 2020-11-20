@@ -4,11 +4,7 @@ from telegram.ext import MessageHandler, Filters
 import os
 import guesscmd
 import searchcmd
-import startsearchcmd
 import treasurecmd
-import starttreasurecmd
-import badboatcmd
-import goodboat
 import badmancmd
 import goodmancmd
 import fastcmd
@@ -39,11 +35,12 @@ import startrewardscmd
 import punishcmd
 import startpunishcmd
 import killbotcmd
-import startfishingcmd
 import fishing
 import historycmd
 import CanadaHistoryChinese
 import ChinaHistoryChinese
+import amongusRule
+import coins
 
 
 def read_file_as_str(file_path):
@@ -102,14 +99,14 @@ def echo(update, context):
 TOKEN=read_file_as_str('TOKEN')
 
 updater = Updater(token=TOKEN, use_context=True)
+me = updater.bot.get_me()
+print(f"{me.username} start...")
 dispatcher = updater.dispatcher
+amongusRule.add_handler(dispatcher)
+coins.add_handler(dispatcher)
 guesscmd.add_handler(dispatcher)
 searchcmd.add_handler(dispatcher)
-startsearchcmd.add_handler(dispatcher)
 treasurecmd.add_handler(dispatcher)
-starttreasurecmd.add_handler(dispatcher)
-badboatcmd.add_handler(dispatcher)
-goodboat.add_handler(dispatcher)
 badmancmd.add_handler(dispatcher)
 goodmancmd.add_handler(dispatcher)
 fastcmd.add_handler(dispatcher)
@@ -140,11 +137,15 @@ punishcmd.add_handler(dispatcher)
 startrewardscmd.add_handler(dispatcher)
 startpunishcmd.add_handler(dispatcher)
 killbotcmd.add_handler(dispatcher)
-startfishingcmd.add_handler(dispatcher)
 fishing.add_handler(dispatcher)
 historycmd.add_handler(dispatcher)
 CanadaHistoryChinese.add_handler(dispatcher)
 ChinaHistoryChinese.add_handler(dispatcher)
+
+commands = guesscmd.get_command()
+bot = updater.bot
+bot.set_my_commands(commands)
+
 start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
 echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
