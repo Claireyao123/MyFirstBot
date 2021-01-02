@@ -7,7 +7,7 @@ from json import dumps,loads
 def info(update : Update, context : CallbackContext):
     u = str(update)
     u = dumps(eval(u),indent=2)
-    context.bot.send_message(update.effective_user.id,text=u,)
+    context.bot.send_message(update.effective_user.id,text=u)
 
 def add_dispatcher(dp: Dispatcher):
     dp.add_handler(CommandHandler(["info"], info))
