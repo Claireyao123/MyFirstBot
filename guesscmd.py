@@ -87,7 +87,7 @@ def getUsers(users):
 
 def guess(update, context):
     global timer
-    chatid = update.effective_chat.id
+    chatid = str(update.effective_chat.id)
     check_chatid(chatid)
     timer = datetime.now() + timedelta(seconds=5)
     update.message.reply_text("开始游戏🎮！",reply_markup=startkb)
@@ -95,7 +95,7 @@ def guess(update, context):
 def buttonCallback(update, context):
     global games,timer
     query = update.callback_query 
-    chatid = update.effective_chat.id
+    chatid = str(update.effective_chat.id)
     user = update.effective_user
     check_chatid(chatid)
     users = games[chatid]["p"]

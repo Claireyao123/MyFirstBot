@@ -41,6 +41,8 @@ import CanadaHistoryChinese
 import ChinaHistoryChinese
 import amongusRule
 import coins
+import gif
+import info
 
 
 def read_file_as_str(file_path):
@@ -67,6 +69,8 @@ def start(update, context):
     /punish 命运的齿轮⚙️
     /history 历史辅导📃
     /fishing 钓鱼游戏🎣
+    /gif 发送有意思的动图😂
+    /info 发送信息的详情🔎
 
     ------------------------------------------
 
@@ -87,6 +91,8 @@ def start(update, context):
     /history History Helping 📃
     /rewards Random Rewards 🎁
     /punish Random Punishes 😈
+    /gif Sending funny gifs
+    /info Sending Details About A Message 🔎
 
     -----------------------------------------
 
@@ -102,6 +108,8 @@ updater = Updater(token=TOKEN, use_context=True)
 me = updater.bot.get_me()
 print(f"{me.username} start...")
 dispatcher = updater.dispatcher
+gif.add_handler(dispatcher)
+info.add_dispatcher(dispatcher)
 amongusRule.add_handler(dispatcher)
 coins.add_handler(dispatcher)
 guesscmd.add_handler(dispatcher)

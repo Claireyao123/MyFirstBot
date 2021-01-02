@@ -19,14 +19,14 @@ def read_file_as_str(file_path):
 
 def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=("""
-    大家好！我是近期 Claire 创建的 Among Us Bot：
-/AmongUs 开始游戏 / 查看规则
-/AmongUsShop 去商店
-/AmongUsBank 查看钱数
-__________________________
 Hi everyone! I am the Among Us Bot which created by Claire recently:
 /AmongUs Start a Game / Check the Rules
-    """))
+/AmongUsShop Wanna buy something?
+/AmongUsBank Check how much money you have
+---------------------------
+If you have questions, pls send to this email, we will be happy to response you :)
+qianjiyao5@gmail.com
+"""))
 
 def echo(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=("这个我不知道怎么执行❓ \nSorry I don't understand this command..."))
