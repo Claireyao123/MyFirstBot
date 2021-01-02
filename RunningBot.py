@@ -4,30 +4,7 @@ from telegram.ext import MessageHandler, Filters
 import os
 import guesscmd
 import searchcmd
-import treasurecmd
-import badmancmd
-import goodmancmd
-import fastcmd
-import slowcmd
-import yeswalkcmd
-import nowalkcmd
-import fightcmd
-import runcmd
-import drinkcmd
-import restcmd
-import dancecmd
-import earlycmd
-import latecmd
-import fightPcmd
-import awaycmd
-import happycmd
-import checkcmd
-import threecmd
-import fourcmd
-import yeswatchcmd
-import nowatchcmd
-import islandcmd
-import boatcmd
+import treasurecmd 
 import huntDinosaurscmd
 import StartHuntDinosaurscmd
 import rewardscmd
@@ -92,7 +69,7 @@ def start(update, context):
     /rewards Random Rewards 🎁
     /punish Random Punishes 😈
     /gif Sending funny gifs
-    /info Sending Details About A Message 🔎
+    /info Sending Details About A Message
 
     -----------------------------------------
 
@@ -115,29 +92,6 @@ coins.add_handler(dispatcher)
 guesscmd.add_handler(dispatcher)
 searchcmd.add_handler(dispatcher)
 treasurecmd.add_handler(dispatcher)
-badmancmd.add_handler(dispatcher)
-goodmancmd.add_handler(dispatcher)
-fastcmd.add_handler(dispatcher)
-slowcmd.add_handler(dispatcher)
-yeswalkcmd.add_handler(dispatcher)
-nowalkcmd.add_handler(dispatcher)
-fightcmd.add_handler(dispatcher)
-runcmd.add_handler(dispatcher)
-drinkcmd.add_handler(dispatcher)
-restcmd.add_handler(dispatcher)
-dancecmd.add_handler(dispatcher)
-earlycmd.add_handler(dispatcher)
-latecmd.add_handler(dispatcher)
-fightPcmd.add_handler(dispatcher)
-awaycmd.add_handler(dispatcher)
-happycmd.add_handler(dispatcher)
-checkcmd.add_handler(dispatcher)
-threecmd.add_handler(dispatcher)
-fourcmd.add_handler(dispatcher)
-yeswatchcmd.add_handler(dispatcher)
-nowatchcmd.add_handler(dispatcher)
-islandcmd.add_handler(dispatcher)
-boatcmd.add_handler(dispatcher)
 huntDinosaurscmd.add_handler(dispatcher)
 StartHuntDinosaurscmd.add_handler(dispatcher)
 rewardscmd.add_handler(dispatcher)
