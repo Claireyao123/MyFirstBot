@@ -3,34 +3,75 @@ from telegram import Update,Animation,PhotoSize,Audio,Sticker,Document,Voice,Vid
 from telegram.ext import Dispatcher,CommandHandler,CallbackContext
 from json import dumps
 
+total = ""
+def info(update,context):
+    if update.message.reply_to_message:
+        if update.message.reply_to_message.animation:
+            u = str(update.message.reply_to_message.animation)
+            u = dumps(eval(u),indent=5)
+            update.message.reply_text(f"""This is an animation.
+==============================
+{u}""")
+        elif update.message.reply_to_message.photo:
+            u = str(update.message.reply_to_message.photo[len(update.message.reply_to_message.photo)-1])
+            u = dumps(eval(u),indent=5)
+            update.message.reply_text(f"""This is a photo.
+==============================
+{u}""")
+        elif update.message.reply_to_message.audio:
+            u = str(update.message.reply_to_message.audio)
+            u = dumps(eval(u),indent=5)
+            update.message.reply_text(f"""This is an audio.
+==============================
+{u}""")
+        elif update.message.reply_to_message.game:
+            u = str(update.message.reply_to_message.game)
+            u = dumps(eval(u),indent=5)
+            update.message.reply_text(f"""This is a game.
+==============================
+{u}""")
+        elif update.message.reply_to_message.sticker:
+            u = str(update.message.reply_to_message.sticker)
+            u = dumps(eval(u),indent=5)
+            update.message.reply_text(f"""This is a sticker.
+==============================
+{u}""")
+        elif update.message.reply_to_message.video:
+            u = str(update.message.reply_to_message.video)
+            u = dumps(eval(u),indent=5)
+            update.message.reply_text(f"""This is a video.
+==============================
+{u}""")
+        elif update.message.reply_to_message.voice:
+            u = str(update.message.reply_to_message.voice)
+            u = dumps(eval(u),indent=5)
+            update.message.reply_text(f"""This is a voice message.
+==============================
+{u}""")
+        elif update.message.reply_to_message.document:
+            u = str(update.message.reply_to_message.voice)
+            u = dumps(eval(u),indent=5)
+            update.message.reply_text(f"""This is a document.
+==============================
+{u}""")
+        elif update.message.reply_to_message.video_note:
+            u = str(update.message.reply_to_message.video_note)
+            u = dumps(eval(u),indent=5)
+            update.message.reply_text(f"""This is a video message.
+==============================
+{u}""")
+        else:
+            u = str(update.message.reply_to_message)
+            u = dumps(eval(u),indent=5)
+            update.message.reply_text(f"""Such a normie message
+==============================
+{u}""")
+    else:
+        u = str(update.message)
+        u = dumps(eval(u),indent=5)
+        update.message.reply_text(f"""WTH is this thingy
+==============================
+{u}""")
 
-def info(update:Update,context:CallbackContext):
-    u = str(update)
-    u = dumps(eval(u))
-    # msgType = update.message.
-    # msg = "This is a %s\n===================\n%s"%(,u)
-    # context.bot.send_message(chat_id=update.effective_chat.id,text=msg)
-    #  https://python-telegram-bot.readthedocs.io/en/stable/telegram.message.html#telegram.Message
-    msg = ""
-    if update.message.reply_to_message.video:
-        msg = 'That\'s a video'
-    elif update.message.reply_to_message.voice:
-        msg = 'That\'s a voice'
-    elif update.message.reply_to_message.animation:
-        msg = 'That\'s an animation'
-    elif update.message.reply_to_message.video_note:
-        msg = 'That\'s a video note'
-    elif update.message.reply_to_message.document:
-        msg = 'That\'s a document'
-    elif update.message.reply_to_message.sticker:
-        msg = 'That\'s a sticker'
-    elif update.message.reply_to_message.audio:
-        msg = 'That\'s an audio'
-    elif update.message.reply_to_message.message:
-        msg = 'That\'s a message'
-
-    update.message.reply_text(msg,u)
-
-def add_dispatcher(dp: Dispatcher):
-    dp.add_handler(CommandHandler(["info"], info))
-    return []
+def add_handler(dp):
+    dp.add_handler(CommandHandler("getinfo", info))

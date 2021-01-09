@@ -138,10 +138,6 @@ def buttonCallback(update,context):
     elif query.data == 'treasure:ship':
         query.answer("回船过夜")
         query.edit_message_animation(gifSHIP,caption='你和你的船员们把财宝带上了船并回到了港口！你成功了！现在你是独一无二的优秀船长！太厉害啦！！！这 15000XP 50AP 200GP 是从宝箱里取出来的奖励！好好使用它吧！寻宝游戏圆满结束啦！使用 /start 来看看玩点别的什么吧！')
-    
-    
-
-
 
 
 def treasure(update, context):

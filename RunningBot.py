@@ -21,6 +21,7 @@ import coins
 import gif
 import info
 
+gifSTART = 'https://images.huffingtonpost.com/2014-03-21-fish.gif'
 
 def read_file_as_str(file_path):
     # 判断路径文件存在
@@ -33,6 +34,7 @@ def read_file_as_str(file_path):
     return all_the_text
 
 def start(update, context):
+    update.message.reply_animation(gifSTART)
     context.bot.send_message(chat_id=update.effective_chat.id, text=("""
     大家好！我是一个每天无所事事的咸鱼，总想找人聊天。我自己也会不断升级的，升级详情请看我的名字！
     有的时候翻译不准是 Google Translate 的错，跟我没关系！
@@ -68,12 +70,14 @@ def start(update, context):
     /history History Helping 📃
     /rewards Random Rewards 🎁
     /punish Random Punishes 😈
-    /gif Sending funny gifs
-    /info Sending Details About A Message
+    /gif Sending funny gifs 😂
+    /info Sending Details About A Message 🔎
 
     -----------------------------------------
 
     If you dislike me, you can use /killbot , but please don't !!!
+
+    Hope you enjoy!
     """))
 
 def echo(update, context):
