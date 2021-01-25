@@ -29,6 +29,7 @@ def info(update,context):
             u = dumps(eval(u),indent=5)
             update.message.reply_text(f"""This is a game.
 ==============================
+
 {u}""")
         elif update.message.reply_to_message.sticker:
             u = str(update.message.reply_to_message.sticker)

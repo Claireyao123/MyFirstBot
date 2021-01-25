@@ -20,6 +20,8 @@ import amongusRule
 import coins
 import gif
 import info
+import youtubeMusic
+import mycal
 
 gifSTART = 'https://images.huffingtonpost.com/2014-03-21-fish.gif'
 
@@ -89,8 +91,9 @@ updater = Updater(token=TOKEN, use_context=True)
 me = updater.bot.get_me()
 print(f"{me.username} start...")
 dispatcher = updater.dispatcher
+youtubeMusic.add_handler(dispatcher)
 gif.add_handler(dispatcher)
-info.add_dispatcher(dispatcher)
+info.add_handler(dispatcher)
 amongusRule.add_handler(dispatcher)
 coins.add_handler(dispatcher)
 guesscmd.add_handler(dispatcher)
@@ -107,6 +110,7 @@ fishing.add_handler(dispatcher)
 historycmd.add_handler(dispatcher)
 CanadaHistoryChinese.add_handler(dispatcher)
 ChinaHistoryChinese.add_handler(dispatcher)
+mycal.add_handler(dispatcher)
 
 commands = guesscmd.get_command()
 bot = updater.bot
@@ -118,3 +122,4 @@ echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
 dispatcher.add_handler(echo_handler)
 
 updater.start_polling()
+updater.idle()
