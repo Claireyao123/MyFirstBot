@@ -3,6 +3,13 @@ from datetime import date, timedelta
 from telegram.ext import CallbackContext, Dispatcher, CommandHandler
 from telegram import Update
 import pytz
+import config
+
+cals = config.CONFIG["cals"]
+
+def save():
+    config.CONFIG["cals"] = cals
+    config.save_config()
 
 def timer_callback(context: CallbackContext):
     tomorrow = date.today() + timedelta(days=1)
@@ -15,13 +22,13 @@ def timer_callback(context: CallbackContext):
 
 def cal(update,context):
     chatid = update.effective_chat.id
-    context.job_queue.run_repeating(timer_callback,5,context=chatid)
+    context.job_queue.run_repeating(timer_callback,3600,context=chatid)
 
 def run_repeating(update,job_queue):
     chat_id = update.effective_chat.id
     j = job_queue.run_daily(timer_callback,timedelta(hour=11,minute=50,tzinfo=pytz.timezone('US/Eastern')), context=chat_id)
-    update.effective_message.reply_text(f"Start sending message, next time:(j.next)")
+    update.effective_message.reply_text(f"From now on, I will be starting to send message to you every hour.")
 
 def add_handler(dp:Dispatcher):
-    cal_handler = CommandHandler('MyCal', cal)
+    cal_handler = CommandHandler('calender', cal)
     dp.add_handler(cal_handler)
