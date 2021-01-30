@@ -4,6 +4,7 @@ import pafy
 import os
 
 def youtubemusic(update,context):
+    print(context.args)
     if len(context.args) == 1:
         url = context.args[0]
         video = pafy.new(url)

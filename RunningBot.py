@@ -21,7 +21,6 @@ import coins
 import gif
 import info
 import youtubeMusic
-import mycal
 
 gifSTART = 'https://images.huffingtonpost.com/2014-03-21-fish.gif'
 
@@ -110,7 +109,6 @@ fishing.add_handler(dispatcher)
 historycmd.add_handler(dispatcher)
 CanadaHistoryChinese.add_handler(dispatcher)
 ChinaHistoryChinese.add_handler(dispatcher)
-mycal.add_handler(dispatcher)
 
 commands = guesscmd.get_command()
 bot = updater.bot

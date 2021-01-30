@@ -18,3 +18,5 @@ load_config()
 
 if not "coins" in CONFIG:
     CONFIG["coins"] = {}
+if not "cals" in CONFIG:
+    CONFIG["cals"] = {}
