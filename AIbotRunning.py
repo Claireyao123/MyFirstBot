@@ -29,8 +29,23 @@ def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=("""
     Hi! I'm a well-done AI bot! From now on, I'm your friend! 
     Now you can talk to me and play with me if you want! 
+
     /About Who I Am?
-    /Emotion Tell me your feelings :D
+    Example: 
+    You: /About
+    Me: (information about me)
+
+    /Emotion Sad/Happy/Angry/Tired/Relax/InLove
+    Tell me your feelings :D I will try to help you! 
+    Example: 
+    You: /Emotion Sad
+    Me: (a text message)
+    
+    /Music Sad/Happy/Relax/Angry/Inspire/ 
+    Music can help to organize your feeling and mind, try to listen some from my music list ^_^
+    Example: 
+    You: /Music Sad
+    Me: (List of Music)
 """))
 
 def echo(update, context):
